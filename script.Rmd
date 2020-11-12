@@ -1,0 +1,57 @@
+---
+title: "Prediksi Harga Rumah dengan Simple Linear Regression"
+output: html_notebook
+---
+
+## 1. Extract, Transform and Load
+
+Mengambil data dari Google Form yang sudah dibuat oleh peneliti
+```{r}
+df <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQPxaeFh5D0v2-3KP3ypa3WPrUhwSPlOIMHUDm_Am4yvprS365Ro7RbZmwBXIWSKXbJjyY0pw45GdIE/pub?gid=1943861234&single=true&output=csv")
+head(df)
+```
+
+
+## 2. Data Pre-processing
+
+Tidak memerlukan data cleaning
+
+## 3. Exploratory Data Analysis (EDA)
+
+Menggambarkan hubungan antara ukuran tanah dengan harga tanah
+```{r}
+plot(df$Ukuran.Tanah..m2., df$Harga..Juta.Rupiah.)
+```
+
+Mencari hubungan antara fitur/variabel ukuran dan harga
+```{r}
+cor(df$Ukuran.Tanah..m2.,df$Harga..Juta.Rupiah.)
+```
+
+
+## 4. Modeling
+
+Melakukan pembelajaran mesin dengan menggunakan fungsi lm()
+```{r}
+regresi <- lm(Harga..Juta.Rupiah. ~ Ukuran.Tanah..m2., df)
+print(regresi)
+```
+
+
+## 5. Forecasting
+
+Visualisasi garis regresi
+```{r}
+plot(df$Ukuran.Tanah..m2., df$Harga..Juta.Rupiah.)
+abline(regresi)
+```
+
+Berapa harga rumah 90 m2?
+```{r}
+predict(regresi, data.frame(Ukuran.Tanah..m2. = 90))
+```
+
+```{r}
+summary(regresi)
+```
+kesimpulan : ada 45% prediksi yang sesuai dengan data real
