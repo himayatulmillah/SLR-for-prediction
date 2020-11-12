@@ -5,4 +5,4 @@ The dataset is about house prices in Bojosoang-Bandung that inputed by workshop 
 
 We didn't go through the cleaning process because the dataset was clean, so we passed it to Exploratory Data Analysis (EDA), Modeling with Simple Linear Regression and Forecasting.
 
-<code>script.Rmd</code> is the source code file and <code>script.html</code> is the output file in html extension
+<code>script.Rmd</code> is the source code file and <code>script.nb.html</code> is the output file in html extension
